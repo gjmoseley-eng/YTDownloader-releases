@@ -6,6 +6,18 @@
         <description>Update feed for YTDownloader</description>
         <language>en</language>
         <item>
+            <title>Version 1.0.8</title>
+            <pubDate>Fri, 28 Aug 2026 14:15:00 -0500</pubDate>
+            <sparkle:version>5</sparkle:version>
+            <sparkle:shortVersionString>1.0.8</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <enclosure
+                url="https://github.com/gjmoseley-eng/YTDownloader-releases/releases/download/v1.0.8/YTDownloader-1.0.8.zip"
+                sparkle:edSignature="zjm6m0W3O31h8i0F9WTY7u5a1R5sH5vUPlNQVxtL4avxjh117VIM+tIvwnJkk4zE6lwHniLsPmY8/LMIcQgaDQ=="
+                length="182789690"
+                type="application/octet-stream" />
+        </item>
+        <item>
             <title>Version 1.0.7</title>
             <pubDate>Fri, 28 Aug 2026 11:52:00 -0500</pubDate>
             <sparkle:version>4</sparkle:version>
