@@ -80,6 +80,9 @@
   <div class="question">What's the difference between "Check for Updates" and "Check for yt-dlp Update"?</div>
   <p class="answer">"Check for Updates" (in the app menu) updates YTDownloader itself. "Check for yt-dlp Update" updates the internal engine that actually talks to YouTube — this matters because YouTube changes things fairly often, and yt-dlp updates keep up with those changes independently of app releases.</p>
 
+  <div class="question">The log shows &ldquo;HTTP Error 403: Forbidden,&rdquo; or a message says YouTube blocked the standard download. Did my download work?</div>
+  <p class="answer">Yes, if you see a message that says <strong>Download complete</strong>, your file is saved and there is nothing you need to do. Sometimes YouTube refuses to hand over a video the usual way partway through. When that happens, YTDownloader notices and automatically tries again using a different kind of stream, at the quality you picked (this kind of stream tops out at 1080p, so a 4K choice comes out at 1080p). The retry starts the download over, so it can take a little longer. In the log at the bottom, the &ldquo;HTTP Error 403&rdquo; line is followed by a line starting with <strong>&gt;&gt;&gt;</strong> that marks the retry. If a download ends with an error and no retry message, use Help &rarr; Send Feedback so the log comes to Gardner.</p>
+
   <div class="question">A download failed — what do I do?</div>
   <p class="answer">Check the Log panel at the bottom of the window for details. If it's not clear what went wrong, use Help → Send Feedback, which will include the recent log automatically.</p>
 </body>
