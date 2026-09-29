@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YTDownloader Release Notes</title>
+<style>
+  :root {
+    --crimson: #cc4a3d;
+    --charcoal: #17171a;
+    --silver: #b8b9c1;
+    --silver-dim: #737485;
+    --teal: #70cddd;
+  }
+  body {
+    background-color: #0a0a0c;
+    background-image: radial-gradient(circle at top, rgba(204,74,61,0.08), transparent 50%);
+    color: var(--silver);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+    line-height: 1.6;
+  }
+  h1 {
+    color: #fff;
+    font-size: 28px;
+    margin-bottom: 4px;
+  }
+  .subtitle {
+    color: var(--silver-dim);
+    font-size: 14px;
+    margin-bottom: 40px;
+  }
+  .release {
+    border-top: 1px solid var(--charcoal);
+    padding-top: 24px;
+    margin-top: 32px;
+  }
+  .version {
+    color: var(--teal);
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+  }
+  .date {
+    color: var(--silver-dim);
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+  .section {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 16px 0 4px;
+  }
+  ul {
+    margin: 0;
+    padding-left: 22px;
+  }
+  li {
+    margin-bottom: 4px;
+  }
+  strong {
+    color: #fff;
+  }
+  a {
+    color: var(--teal);
+  }
+</style>
+</head>
+<body>
+  <h1>YTDownloader Release Notes</h1>
+  <div class="subtitle">What changed in each version, newest first. To update, choose <strong>Check for Updates</strong> from the YTDownloader menu.</div>
+
+  <div class="release">
+    <h2 class="version">1.1.1</h2>
+    <div class="date">September 29, 2026</div>
+    <div class="section">What's New</div>
+    <ul>
+      <li>If YouTube blocks a download partway through, YTDownloader now automatically tries again using a different kind of stream, so the download still finishes. These retried downloads top out at 1080p.</li>
+    </ul>
+    <div class="section">Fixed</div>
+    <ul>
+      <li>Some downloads stopped partway with &ldquo;HTTP Error 403&rdquo; and failed. They now finish on their own.</li>
+    </ul>
+  </div>
+
+  <div class="release">
+    <h2 class="version">1.1.0</h2>
+    <div class="date">August 28, 2026</div>
+    <div class="section">What's New</div>
+    <ul>
+      <li>Added a User Manual and FAQ, both in the Help menu.</li>
+    </ul>
+  </div>
+
+  <div class="release">
+    <h2 class="version">1.0.9</h2>
+    <div class="date">August 28, 2026</div>
+    <div class="section">What's New</div>
+    <ul>
+      <li>Full playlist support: download an entire playlist, choose specific videos, or grab a single video from a playlist link.</li>
+      <li>Quality selection adapts for playlist and multi-video downloads.</li>
+      <li>Added Back navigation between the video selection and quality screens.</li>
+      <li>Moved &ldquo;Check for yt-dlp Update&rdquo; to the bottom of the window.</li>
+      <li>Added Help &rarr; Send Feedback, which opens an email filled in with app info and recent log details.</li>
+    </ul>
+    <div class="section">Fixed</div>
+    <ul>
+      <li>The window no longer resizes or jumps when moving between screens.</li>
+      <li>Disabled buttons now look dimmed.</li>
+      <li>Audio-only playlist downloads now save as .m4a instead of .webm.</li>
+    </ul>
+  </div>
+
+  <div class="release">
+    <h2 class="version">1.0.8</h2>
+    <div class="date">August 28, 2026</div>
+    <div class="section">What's New</div>
+    <ul>
+      <li>A YouTube link you've copied is pasted into the URL field automatically when the app opens.</li>
+      <li>The video title now appears above the format list.</li>
+      <li>The format list stays visible after a download, so you can grab another quality of the same video without fetching it again.</li>
+      <li>Downloading the same video at the same quality twice no longer overwrites the first file.</li>
+      <li>Added a &ldquo;Reveal in Finder&rdquo; button after downloads finish.</li>
+      <li>Added a notification when downloads finish, with a quick &ldquo;Show in Finder&rdquo; action.</li>
+    </ul>
+    <div class="section">Fixed</div>
+    <ul>
+      <li>The log panel no longer flickers between fetching and downloading.</li>
+    </ul>
+  </div>
+
+  <div class="release">
+    <h2 class="version">1.0.7</h2>
+    <div class="date">August 28, 2026</div>
+    <div class="section">What's New</div>
+    <ul>
+      <li>More reliable update checks: the app checks when it opens and again periodically while it stays open.</li>
+      <li>Updates always ask before installing. Nothing installs silently in the background.</li>
+    </ul>
+    <div class="section">Fixed</div>
+    <ul>
+      <li>Fixed a brief flicker on launch caused by the macOS password AutoFill panel.</li>
+    </ul>
+  </div>
+
+  <div class="release">
+    <h2 class="version">1.0.6</h2>
+    <div class="date">August 28, 2026</div>
+    <div class="section">Fixed</div>
+    <ul>
+      <li>The log panel now scrolls to the latest entry right after fetching formats.</li>
+    </ul>
+  </div>
+
+  <div class="release">
+    <h2 class="version">1.0.5</h2>
+    <div class="date">August 27, 2026</div>
+    <div class="section">Fixed</div>
+    <ul>
+      <li>Behind-the-scenes fixes to the update system.</li>
+    </ul>
+  </div>
+
+  <div class="release">
+    <h2 class="version">1.0.4</h2>
+    <div class="date">August 27, 2026</div>
+    <div class="section">What's New</div>
+    <ul>
+      <li>The app now checks for updates automatically in the background.</li>
+    </ul>
+  </div>
+
+  <div class="release">
+    <h2 class="version">1.0.3</h2>
+    <div class="date">August 27, 2026</div>
+    <div class="section">What's New</div>
+    <ul>
+      <li>Added the update system, so the app can check for and install new versions.</li>
+    </ul>
+  </div>
+</body>
+</html>
