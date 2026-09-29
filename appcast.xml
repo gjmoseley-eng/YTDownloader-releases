@@ -6,6 +6,33 @@
         <description>Update feed for YTDownloader</description>
         <language>en</language>
         <item>
+            <title>Version 1.2.0</title>
+            <pubDate>Tue, 29 Sep 2026 11:46:00 -0500</pubDate>
+            <sparkle:version>9</sparkle:version>
+            <sparkle:shortVersionString>1.2.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:fullReleaseNotesLink>https://gjmoseley-eng.github.io/YTDownloader-releases/release-notes.html</sparkle:fullReleaseNotesLink>
+            <description><![CDATA[
+<h3>What's New</h3>
+<ul>
+<li>Download History: click History (or press Command-Y) to see your last 100 downloads and jump straight to any of them in Finder.</li>
+<li>Captions: save a video's English captions as an .srt file, embed them in the video, or both. Videos without captions still download normally.</li>
+<li>Trim: download just part of a video. A preview window lets you step through frame by frame to set the start and end, and the clip is cut exactly there.</li>
+<li>Help &gt; Release Notes shows what changed in each version.</li>
+</ul>
+<h3>Fixed</h3>
+<ul>
+<li>Downloads at 1080p and below now use a stream YouTube blocks far less often, so they finish on the first try more often.</li>
+<li>Cancelling a download now stops it completely and removes the unfinished files.</li>
+</ul>
+]]></description>
+            <enclosure
+                url="https://github.com/gjmoseley-eng/YTDownloader-releases/releases/download/v1.2.0/YTDownloader-1.2.0.zip"
+                sparkle:edSignature="kpz3ymQ84DX5Dw0qEW4zkiWI49GrarB0KEZzplhu7Kn+oCbQTMY2ED0lhgu7UevdWgPAon5zY8gQ0xvbhn+6Cg=="
+                length="183118606"
+                type="application/octet-stream" />
+        </item>
+        <item>
             <title>Version 1.1.1</title>
             <pubDate>Tue, 29 Sep 2026 09:20:00 -0500</pubDate>
             <sparkle:version>8</sparkle:version>

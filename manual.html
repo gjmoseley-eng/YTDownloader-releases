@@ -88,6 +88,34 @@
     <li>If you download the same video and quality twice, the second copy is automatically renamed instead of overwriting the first.</li>
   </ul>
 
+  <h2>Download History</h2>
+  <p>Click <strong>History</strong> in the top-right corner (or press <strong>⌘Y</strong>) to see your last 100 downloads: the title, what you downloaded, when, and which folder it went to.</p>
+  <ul>
+    <li>Click <strong>Show in Finder</strong> to jump straight to the file.</li>
+    <li>Right-click an entry to open the file, copy the YouTube link, or remove it from the list.</li>
+    <li>If you move or rename a file afterward, History still finds it. If it's been deleted (or moved to the Trash or another drive), it shows in gray.</li>
+    <li><strong>Clear History</strong> only clears the list. It never deletes your files.</li>
+  </ul>
+
+  <h2>Captions</h2>
+  <p>Two checkboxes above the Save to folder add English captions to your download. The app remembers your choice.</p>
+  <ul>
+    <li><strong>Save captions (.srt)</strong> saves the captions as a separate .srt file next to the video, with the same name. This works with ProPresenter, Premiere, and most editing and presentation software, and with audio-only downloads too.</li>
+    <li><strong>Embed captions in video</strong> adds the captions inside the video file. They're off until you turn them on in the player (in QuickTime, choose View &rarr; Subtitles).</li>
+  </ul>
+  <p>If a video has captions its creator wrote, those are used. Otherwise YTDownloader uses YouTube's automatic captions and tidies up their timing. If a video has no English captions at all, it still downloads normally and a note lets you know.</p>
+
+  <h2>Trimming a Clip</h2>
+  <p>To download just part of a video, such as one song or an announcement from a long service:</p>
+  <ol>
+    <li>Fetch the video, then click <strong>Trim&hellip;</strong> above the Save to folder.</li>
+    <li>A preview window opens. Play and pause with the <strong>Space</strong> bar, use the 5-second buttons to move around, and press the <strong>&larr;</strong> and <strong>&rarr;</strong> arrow keys to step one frame at a time (hold <strong>Shift</strong> to move one second).</li>
+    <li>Click <strong>Set Start</strong> (or press <strong>I</strong>) and <strong>Set End</strong> (or press <strong>O</strong>) at the right spots. You can also type times, like <strong>1:02:03.50</strong> or <strong>2:30</strong>.</li>
+    <li>Click <strong>Preview Clip</strong> to watch just that part, then click <strong>Use Clip</strong>.</li>
+    <li>Pick a quality and click <strong>Download</strong>.</li>
+  </ol>
+  <p>The clip is cut exactly where you set it and saved with the times in its name, like <strong>[clip 50m00s to 52m30s]</strong>, so it never replaces the full video. Cutting exactly takes a little processing, so a clip can take a bit longer than you'd expect for its length. To download the whole video again, click the <strong>&times;</strong> next to the clip times. Trimming works on single videos, not playlists.</p>
+
   <h2>Keeping Things Up to Date</h2>
   <ul>
     <li>YTDownloader checks for its own updates automatically. If one's available, you'll see a dialog with three choices:
@@ -97,6 +125,7 @@
         <li><strong>Skip This Version</strong> — dismisses that specific update for good; you won't be asked about it again (you'll still be notified of future updates).</li>
       </ul>
     </li>
+    <li>To see what changed in each version, choose Help &rarr; <strong>Release Notes</strong>, or click <strong>Version History</strong> in the update dialog.</li>
     <li><strong>Check for yt-dlp Update</strong> (bottom right) checks for updates to the underlying download engine, separately from the app itself. This runs automatically once a day as well.</li>
   </ul>
 

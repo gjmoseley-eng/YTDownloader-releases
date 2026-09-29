@@ -83,6 +83,15 @@
   <div class="question">The log shows &ldquo;HTTP Error 403: Forbidden,&rdquo; or a message says YouTube blocked the standard download. Did my download work?</div>
   <p class="answer">Yes, if you see a message that says <strong>Download complete</strong>, your file is saved and there is nothing you need to do. Sometimes YouTube refuses to hand over a video the usual way partway through. When that happens, YTDownloader notices and automatically tries again using a different kind of stream, at the quality you picked (this kind of stream tops out at 1080p, so a 4K choice comes out at 1080p). The retry starts the download over, so it can take a little longer. In the log at the bottom, the &ldquo;HTTP Error 403&rdquo; line is followed by a line starting with <strong>&gt;&gt;&gt;</strong> that marks the retry. If a download ends with an error and no retry message, use Help &rarr; Send Feedback so the log comes to Gardner.</p>
 
+  <div class="question">I checked a captions box, but no captions were saved. Why?</div>
+  <p class="answer">That video doesn't have English captions on YouTube, not even automatic ones. The video itself still downloads normally, and a note after the download tells you captions weren't available. Some videos, like music with no speaking or very new uploads, simply don't have any yet.</p>
+
+  <div class="question">Why does a trimmed clip take longer than I expected?</div>
+  <p class="answer">To cut exactly on the frames you picked, YTDownloader processes the clip after downloading it. A few minutes of 1080p video usually takes well under a minute on a recent Mac, but longer clips and 4K take more time. The progress bar keeps moving while it works.</p>
+
+  <div class="question">Does clearing the download history delete my files?</div>
+  <p class="answer">No. Clear History only empties the list in the app. Your downloaded files stay exactly where they are.</p>
+
   <div class="question">A download failed — what do I do?</div>
   <p class="answer">Check the Log panel at the bottom of the window for details. If it's not clear what went wrong, use Help → Send Feedback, which will include the recent log automatically.</p>
 </body>
