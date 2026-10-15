@@ -2,97 +2,448 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>YTDownloader — FAQ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YTDownloader: FAQ</title>
 <style>
   :root {
-    --crimson: #cc4a3d;
-    --charcoal: #17171a;
-    --silver: #b8b9c1;
-    --silver-dim: #737485;
-    --teal: #70cddd;
+    --accent: #e0675a; --head: #70cddd; --text: #c3c5cf; --dim: #7c7f8e;
+    --line: rgba(255,255,255,0.1); --danger: #ef6a5b; --panel: rgba(255,255,255,0.04);
   }
+  * { box-sizing: border-box; }
   body {
     background-color: #0a0a0c;
-    background-image: radial-gradient(circle at top, rgba(204,74,61,0.08), transparent 50%);
-    color: var(--silver);
+    background-image: radial-gradient(circle at top, rgba(204,74,61,0.10), transparent 55%), linear-gradient(180deg, #0a0a0c, #111114 55%, #1a1a1f);
+    background-attachment: fixed;
+    color: var(--text);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 40px 24px 80px;
-    line-height: 1.6;
+    max-width: 820px; margin: 0 auto; padding: 40px 24px 80px; line-height: 1.6;
   }
-  h1 {
-    color: #fff;
-    font-size: 28px;
-    margin-bottom: 4px;
+  h1 { color: #fff; font-size: 30px; margin-bottom: 4px; }
+  .subtitle { color: var(--dim); font-size: 14px; margin-bottom: 24px; }
+  nav.top { font-size: 14px; margin-bottom: 30px; }
+  nav.top a { margin-right: 18px; }
+  h2 { color: var(--head); font-size: 21px; margin-top: 56px; border-bottom: 1px solid var(--line); padding-bottom: 8px; scroll-margin-top: 16px; }
+  h3 { color: #fff; font-size: 16px; margin-top: 30px; margin-bottom: 6px; scroll-margin-top: 16px; }
+  h4 { color: var(--accent); font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; margin: 22px 0 4px; }
+  ol, ul { padding-left: 22px; }
+  li { margin-bottom: 6px; }
+  strong { color: #fff; }
+  a { color: var(--accent); }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; background: rgba(255,255,255,0.07); padding: 1px 5px; border-radius: 4px; color: #e6e7ee; }
+  pre { background: rgba(0,0,0,0.35); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; overflow-x: auto; }
+  pre code { background: none; padding: 0; }
+  table { border-collapse: collapse; width: 100%; margin: 14px 0; font-size: 14px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: #fff; font-weight: 600; }
+  .note { border-left: 3px solid var(--accent); background: rgba(204,74,61,0.08); padding: 10px 14px; margin: 18px 0; border-radius: 0 6px 6px 0; }
+  .warn { border-left-color: var(--danger); background: rgba(239,106,91,0.08); }
+  .tip { border-left-color: var(--head); background: rgba(112,205,221,0.07); }
+  .toc { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px 20px; columns: 2; column-gap: 32px; font-size: 14px; }
+  .toc a { display: block; text-decoration: none; padding: 2px 0; }
+  .toc a:hover { text-decoration: underline; }
+  figure { margin: 22px 0; }
+  figure img { max-width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); display: block; }
+  figure.phone img { max-width: 300px; }
+  figure.small img { max-width: 520px; }
+  figure.pair { display: flex; gap: 18px; flex-wrap: wrap; }
+  figure.pair img { max-width: 280px; }
+  figcaption { color: var(--dim); font-size: 13px; margin-top: 8px; }
+  .chip { display: inline-block; font-family: ui-monospace, Menlo, monospace; font-size: 12px; padding: 0 6px; border-radius: 4px; border: 1px solid var(--line); }
+  .release { border-top: 1px solid var(--line); padding-top: 22px; margin-top: 30px; }
+  .version { color: #fff; font-size: 20px; font-weight: 600; }
+  .date { color: var(--dim); font-size: 13px; margin-left: 10px; }
+  .new { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.03em; color: var(--head); border: 1px solid rgba(112,205,221,0.5); border-radius: 5px; padding: 0 6px; margin-left: 8px; vertical-align: 2px; white-space: nowrap; }
+  .footer { margin-top: 70px; text-align: center; color: var(--dim); font-size: 12px; }
+  @media (max-width: 640px) { .toc { columns: 1; } }
+</style>
+<style>
+  body { max-width: none; margin: 0; padding: 0; }
+  .layout { display: grid; grid-template-columns: 290px minmax(0, 1fr); min-height: 100vh; }
+  #side { position: sticky; top: 0; align-self: start; height: 100vh; overflow-y: auto; padding: 26px 18px 30px 24px;
+    border-right: 1px solid var(--line); background: rgba(10,10,14,0.55); }
+  #side .brand { color: #fff; font-size: 19px; font-weight: 700; line-height: 1.2; }
+  #side .brand span { display: block; color: var(--dim); font-size: 13px; font-weight: 400; margin-top: 2px; }
+  #side a.for { display: block; margin-top: 6px; font-size: 12px; color: var(--head); text-decoration: none; }
+  #side a.for:hover { text-decoration: underline; }
+  #side input { width: 100%; margin: 16px 0 4px; padding: 8px 11px; border-radius: 8px; border: 1px solid var(--line);
+    background: rgba(255,255,255,0.06); color: #fff; font-size: 14px; }
+  #side input:focus { outline: none; border-color: var(--head); }
+  #count { color: var(--dim); font-size: 12px; min-height: 18px; }
+  #contents { margin-top: 6px; }
+  #contents a { display: flex; gap: 2px; text-decoration: none; color: var(--text); font-size: 14px; line-height: 1.35;
+    padding: 6px 10px; border-radius: 7px; margin: 1px 0; }
+  #contents a:hover { background: rgba(255,255,255,0.06); color: #fff; }
+  #contents a[aria-current="true"] { background: rgba(204,74,61,0.16); color: #fff; font-weight: 600; }
+  #contents a.miss { opacity: 0.35; }
+  #contents a .n { color: var(--dim); flex: none; width: 24px; }
+  #contents a .t { flex: 1; }
+  #contents a .hits { flex: none; color: var(--accent); font-size: 12px; font-weight: 600; }
+  #side .other { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); font-size: 13px; }
+  #side .other a { display: block; padding: 3px 10px; }
+  #menu { display: none; }
+  main { padding: 36px 44px 80px; max-width: 900px; width: 100%; }
+  main h2 { margin-top: 0; font-size: 26px; color: var(--head); border-bottom: 1px solid var(--line); padding-bottom: 12px; }
+  .js section.topic { display: none; }
+  .js section.topic.active, .js.searching section.topic.hit { display: block; }
+  .js.searching section.topic.active:not(.hit) { display: none; }
+  .js.searching section.topic.hit { margin-bottom: 56px; }
+  .js.searching .pager { display: none; }
+  .pager { display: flex; justify-content: space-between; gap: 14px; margin-top: 54px; padding-top: 20px; border-top: 1px solid var(--line); }
+  .pager a { flex: 1 1 0; max-width: 48%; text-decoration: none; border: 1px solid var(--line); border-radius: 10px;
+    padding: 11px 15px; background: var(--panel); color: #fff; font-weight: 600; font-size: 15px; }
+  .pager a:hover { border-color: var(--accent); }
+  .pager a small { display: block; color: var(--dim); font-weight: 400; font-size: 12px; margin-bottom: 2px; }
+  .pager a.next { text-align: right; margin-left: auto; }
+  mark { background: rgba(204,74,61,0.35); color: #fff; border-radius: 3px; padding: 0 1px; }
+  .hidden { display: none !important; }
+  .empty { color: var(--dim); padding: 30px 0; text-align: center; }
+  figure img { cursor: zoom-in; }
+  figure img:focus-visible { outline: 2px solid var(--head); outline-offset: 3px; }
+  #viewer { position: fixed; inset: 0; z-index: 50; background: rgba(6,6,10,0.92); overflow: auto;
+    display: flex; align-items: flex-start; cursor: zoom-out; }
+  #viewer img { margin: auto; display: block; flex: none; border-radius: 8px; height: auto; max-width: none; cursor: zoom-out; }
+  #viewer.can-grow img { cursor: zoom-in; }
+  #viewer.actual img { cursor: zoom-out; margin: 16px auto; }
+  #viewer-close { position: fixed; top: 14px; right: 18px; z-index: 51; width: 36px; height: 36px; border-radius: 18px;
+    border: 1px solid var(--line); background: rgba(20,20,28,0.9); color: #fff; font-size: 20px; line-height: 1; cursor: pointer; }
+  #viewer-close:hover { border-color: var(--accent); }
+  #viewer-hint { position: fixed; bottom: 14px; left: 0; right: 0; z-index: 51; text-align: center; color: var(--dim);
+    font-size: 13px; pointer-events: none; }
+  @media (max-width: 880px) {
+    .layout { display: block; }
+    #side { position: sticky; height: auto; max-height: 100vh; padding: 12px 16px; border-right: none;
+      border-bottom: 1px solid var(--line); background: #0a0a0c; z-index: 6; }
+    #side .brand { font-size: 16px; display: inline-block; }
+    #side .brand span { display: none; }
+    #side a.for { display: none; }
+    #menu { display: inline-block; float: right; padding: 5px 11px; border-radius: 8px; border: 1px solid var(--line);
+      background: rgba(255,255,255,0.05); color: var(--text); font-size: 13px; }
+    #side input { margin: 10px 0 2px; }
+    #contents, #side .other { display: none; }
+    #side.open #contents, #side.open .other { display: block; }
+    main { padding: 24px 18px 70px; }
+    main h2 { font-size: 22px; }
   }
-  .subtitle {
-    color: var(--silver-dim);
-    font-size: 14px;
-    margin-bottom: 40px;
+  @media print {
+    #side, .pager { display: none; }
+    .layout { display: block; }
+    .js section.topic { display: block; margin-bottom: 40px; }
   }
-  .question {
-    color: var(--teal);
-    font-size: 16px;
-    font-weight: 600;
-    margin-top: 32px;
-    margin-bottom: 6px;
-  }
-  .answer {
-    margin: 0;
-  }
-  strong {
-    color: #fff;
-  }
-  a {
-    color: var(--teal);
-  }
-  .footer {
-    margin-top: 60px;
-    text-align: center;
-    color: var(--silver-dim);
-    font-size: 12px;
-  }
+</style>
+<style>
+  main h2 { margin-top: 46px; font-size: 21px; color: var(--head); }
+  main section.group:first-of-type h2 { margin-top: 0; }
+  main h1 { margin: 0 0 4px; }
+  .bar { display: flex; gap: 8px; margin: 14px 0 26px; }
+  .bar button { padding: 6px 12px; border-radius: 8px; border: 1px solid var(--line); background: rgba(255,255,255,0.05);
+    color: var(--text); font-size: 13px; cursor: pointer; }
+  .bar button:hover { border-color: var(--accent); color: #fff; }
+  details.qa { border: 1px solid var(--line); border-radius: 8px; margin: 8px 0; background: var(--panel); }
+  details.qa > summary { cursor: pointer; padding: 10px 14px; color: #fff; font-weight: 600; list-style: none; }
+  details.qa > summary::-webkit-details-marker { display: none; }
+  details.qa > summary::before { content: "+"; color: var(--accent); display: inline-block; width: 18px; }
+  details.qa[open] > summary::before { content: "\2212"; }
+  details.qa > .body { padding: 0 14px 10px 32px; }
+  section.group { scroll-margin-top: 16px; }
+  @media (max-width: 880px) { section.group { scroll-margin-top: 132px; } }
 </style>
 </head>
 <body>
-  <h1>YTDownloader — FAQ</h1>
-  <div class="subtitle">Video &amp; audio downloads, no sketchy sites required</div>
+<div class="layout">
+<aside id="side">
+<button type="button" id="menu" aria-label="Show or hide the contents">Contents</button>
+<div class="brand">YTDownloader<span>FAQ</span></div>
+<a class="for" href="release-notes.html">For YTDownloader 1.2.1</a>
+<input id="q" type="search" placeholder="Search the questions" autocomplete="off" aria-label="Search the questions">
+<div id="count"></div>
+<nav id="contents" aria-label="Contents"><a href="#basics"><span class="t">The basics</span></a><a href="#setup"><span class="t">Installing and opening</span></a><a href="#links"><span class="t">Pasting links</span></a><a href="#quality"><span class="t">Quality and formats</span></a><a href="#downloading"><span class="t">Downloading</span></a><a href="#playlists"><span class="t">Playlists</span></a><a href="#trim"><span class="t">Trimming clips</span></a><a href="#captions"><span class="t">Captions</span></a><a href="#files"><span class="t">Files and History</span></a><a href="#signin"><span class="t">Signing in</span></a><a href="#updates"><span class="t">Updates</span></a><a href="#trouble"><span class="t">When something goes wrong</span></a></nav>
+<div class="other"><a href="manual.html">User Manual</a><a href="release-notes.html">Release Notes</a></div>
+</aside>
+<main>
 
-  <div class="question">macOS says it can't verify the app, or asks for network permission — is that normal?</div>
-  <p class="answer">Yes. Since YTDownloader isn't distributed through the Mac App Store, macOS may show a warning the first time you open it — click <strong>Open</strong> to continue. You may also be asked for permission to access your local network, which the app needs to check for updates and, on the church's shared computer, to talk to other tools. Both are normal and safe to allow.</p>
+<div id="oldver" class="note tip hidden"></div>
+<script>
+(function () {
+  var latest = '1.2.1', first = '1.2.1', mine = (location.search.match(/[?&]v=([0-9.]+)/) || [])[1];
+  function parts(v) { return v.split('.').map(Number); }
+  function older(x, y) {
+    var a = parts(x), b = parts(y);
+    for (var i = 0; i < 3; i++) { if ((a[i] || 0) !== (b[i] || 0)) return (a[i] || 0) < (b[i] || 0); }
+    return false;
+  }
+  var update = ', so a few things here may not be in your copy yet. To update, choose <strong>YTDownloader &gt; Check for Updates</strong>.';
+  var text = mine
+    ? (older(mine, latest) ? 'You have YTDownloader <strong>' + mine + '</strong>. This page describes <strong>' + latest + '</strong>' + update : '')
+    : (older(first, latest) || first === latest
+        ? 'Opened this from a version of YTDownloader before ' + first + '? This page describes <strong>' + latest + '</strong>' + update
+        : '');
+  if (text) {
+    var note = document.getElementById('oldver');
+    note.innerHTML = text;
+    note.classList.remove('hidden');
+  }
+  // Moving between the manual, FAQ and release notes keeps the version, so
+  // a current copy never looks like an old one.
+  if (mine) {
+    document.addEventListener('DOMContentLoaded', function () {
+      [].slice.call(document.querySelectorAll('a[href]')).forEach(function (a) {
+        var m = a.getAttribute('href').match(/^(manual|faq|release-notes)\.html(#.*)?$/);
+        if (m) a.setAttribute('href', m[1] + '.html?v=' + mine + (m[2] || ''));
+      });
+    });
+  }
+})();
+</script>
+<h1>Frequently asked questions</h1>
+<div class="subtitle">Common questions about downloading with YTDownloader.</div>
+<div class="bar"><button type="button" id="open-all">Expand all</button><button type="button" id="close-all">Collapse all</button></div>
+<section class="group" id="basics"><h2>The basics</h2>
+<details class="qa"><summary>What is YTDownloader for?</summary><div class="body">
+<p>Saving YouTube videos, or just their sound, as files on your Mac, so you can play them in ProPresenter, Keynote or an editor without relying on the internet or YouTube's ads. See the <a href="manual.html#what">manual</a>.</p>
+</div></details><details class="qa"><summary>Is it OK to download any video?</summary><div class="body">
+<p>Only download videos you have the right to use: your church's own videos, videos whose owner has said yes, or ones under a license that allows reuse. YouTube shows "Creative Commons" in a video's description when it is. Licensed music and films usually aren't covered, even for church use, unless your church has a license that includes them. When in doubt, ask before using it.</p>
+</div></details><details class="qa"><summary>Which Macs does it run on?</summary><div class="body">
+<p>Any Mac with macOS 15 or later, Intel or Apple silicon.</p>
+</div></details><details class="qa"><summary>Does it cost anything, or need an account?</summary><div class="body">
+<p>No. There's nothing to buy and no account to make. Now and then YouTube asks for a Google sign-in; see <a href="#signin">Signing in</a>.</p>
+</div></details><details class="qa"><summary>Does it need the internet?</summary><div class="body">
+<p>Yes, to look up and download videos, and to check for updates. Files you've already downloaded play anywhere, with no internet.</p>
+</div></details><details class="qa"><summary>Does it work with sites other than YouTube?</summary><div class="body">
+<p>No, only YouTube (including youtu.be links, YouTube Music links and Shorts).</p>
 
-  <div class="question">Why is it asking me to sign in to YouTube?</div>
-  <p class="answer">YouTube occasionally requires sign-in to confirm you're not a bot before allowing certain downloads. A sign-in window will open inside the app — log in there, click Done, and try again.</p>
+</div></details></section><section class="group" id="setup"><h2>Installing and opening</h2>
+<details class="qa"><summary>macOS asks if I'm sure I want to open it. Is that normal?</summary><div class="body">
+<p>Yes. YTDownloader doesn't come from the App Store, so the first time you open it macOS checks with Apple and asks you to confirm. Click <strong>Open</strong>. It won't ask again.</p>
+</div></details><details class="qa"><summary>It asked to send notifications. Do I need them?</summary><div class="body">
+<p>No, but they're handy: you'll be told when a download finishes while you're in another app, with a button that shows the file in Finder. To change it later, go to System Settings &gt; Notifications &gt; YTDownloader.</p>
+</div></details><details class="qa"><summary>Where should the app live?</summary><div class="body">
+<p>In your Applications folder. Running it from Downloads or a disk image can stop updates from installing.</p>
+</div></details><details class="qa"><summary>How do I remove it?</summary><div class="body">
+<p>Quit it and drag YTDownloader from Applications to the Trash. Your downloaded videos aren't affected.</p>
 
-  <div class="question">Why does the file download as .mp4 (or .m4a for audio)?</div>
-  <p class="answer">YTDownloader always converts downloads into these formats since they play reliably everywhere, even when YouTube's original file was in a different format behind the scenes.</p>
+</div></details></section><section class="group" id="links"><h2>Pasting links</h2>
+<details class="qa"><summary>Which links work?</summary><div class="body">
+<p>Any link to a single YouTube video or a playlist: <code>youtube.com/watch?v=...</code>, <code>youtu.be/...</code>, Shorts, YouTube Music, and playlist links. Copy it from the browser's address bar or from YouTube's <strong>Share &gt; Copy Link</strong>.</p>
+</div></details><details class="qa"><summary>Fetch Formats spins for a long time, or nothing happens.</summary><div class="body">
+<p>Looking up a video usually takes a few seconds; a long playlist can take longer. If nothing appears after a minute, check the log at the bottom for a message, click <strong>Check for yt-dlp Update</strong> at the bottom right, and try again.</p>
+</div></details><details class="qa"><summary>Why does the Download button stay gray?</summary><div class="body">
+<p>For a single video, click <strong>Fetch Formats</strong> first. Download wakes up once YTDownloader knows what the video is.</p>
+</div></details><details class="qa"><summary>I pasted one video but it asks about a playlist.</summary><div class="body">
+<p>The link includes <code>list=</code>, because you copied it while the video was playing as part of a playlist. The video you meant is already selected, so click <strong>Download Selected (1)</strong>. Or click Back and paste the link without the <code>&amp;list=...</code> part to get the full choice of qualities.</p>
+</div></details><details class="qa"><summary>It says the video is private, unavailable or members-only.</summary><div class="body">
+<p>YouTube won't give that video to anyone who isn't allowed to watch it, so YTDownloader can't either. If it's your church's own video, set it to Public or Unlisted on YouTube first.</p>
+</div></details><details class="qa"><summary>Can I download a live stream?</summary><div class="body">
+<p>Not while it's live. Once the stream ends and YouTube has finished processing it (usually within a few hours), paste the same link and download it like any other video.</p>
+</div></details><details class="qa"><summary>It says the video is age-restricted.</summary><div class="body">
+<p>Sign in when YTDownloader asks, with a Google account that is old enough to watch it. See <a href="#signin">Signing in</a>.</p>
 
-  <div class="question">Why can't I find a 4K option for some videos?</div>
-  <p class="answer">Not every video has a 4K version, and very high resolutions and frame rates aren't always available. Whatever appears in the list is what YouTube is offering for that specific video.</p>
+</div></details></section><section class="group" id="quality"><h2>Quality and formats</h2>
+<details class="qa"><summary>Which quality should I pick for ProPresenter?</summary><div class="body">
+<p><strong>1080p (Full HD)</strong>. It looks sharp on projectors and TVs, plays smoothly, and keeps files a sensible size. Use 4K only for screens that are actually 4K.</p>
+</div></details><details class="qa"><summary>Why isn't there a 4K choice?</summary><div class="body">
+<p>That video wasn't uploaded in 4K. The list only shows what YouTube has for that video.</p>
+</div></details><details class="qa"><summary>I picked 4K but got 1080p. Why?</summary><div class="body">
+<p>YouTube refused to hand over the 4K stream, so YTDownloader retried with a stream that goes up to 1080p rather than fail. A blue note under the Download button says when this happened. Trying again later sometimes gets the higher quality. See <a href="manual.html#progress">While it downloads</a>.</p>
+</div></details><details class="qa"><summary>Why is my 60 fps video only 30 fps?</summary><div class="body">
+<p>The same reason: the retry stream tops out at 1080p and 30 fps. The blue note will say so.</p>
+</div></details><details class="qa"><summary>Why .mp4 and .m4a? Can I get .mov or .mp3?</summary><div class="body">
+<p>YTDownloader always saves .mp4 (video) and .m4a (audio), because they play everywhere: ProPresenter, Keynote, QuickTime, Premiere, iPhone and Windows. If you really need an .mp3, the Music app can convert it: set Music &gt; Settings &gt; Files &gt; Import Settings to MP3, select the song, and choose File &gt; Convert &gt; Create MP3 Version.</p>
+</div></details><details class="qa"><summary>Can I download the video and the audio at the same time?</summary><div class="body">
+<p>Yes. Hold &#8984; (Command) and click both, then click <strong>Download (2)</strong>. Each is saved as its own file.</p>
+</div></details><details class="qa"><summary>What if I don't pick a quality?</summary><div class="body">
+<p>Download saves the best quality YouTube offers for that video.</p>
+</div></details><details class="qa"><summary>Why are some files so big?</summary><div class="body">
+<p>Higher qualities and frame rates make much bigger files: a 10-minute video can be around 250 MB at 1080p and about 700 MB in 4K. Pick 1080p or 720p unless you need more.</p>
 
-  <div class="question">Where do my downloads go?</div>
-  <p class="answer">Wherever your "Save to" folder is set to — the Downloads folder by default. You can change it anytime.</p>
+</div></details></section><section class="group" id="downloading"><h2>Downloading</h2>
+<details class="qa"><summary>Why is a download slow?</summary><div class="body">
+<p>Mostly the length and quality of the video, and your internet speed. YouTube also sends some videos more slowly than others. A clip, or a download with captions, has an extra step at the end.</p>
+</div></details><details class="qa"><summary>The log says "HTTP Error 403: Forbidden". Did it fail?</summary><div class="body">
+<p>Probably not. YouTube sometimes refuses the usual download, often partway through. YTDownloader notices, deletes the partial files and starts again with a different stream; the log shows a line starting with <code>&gt;&gt;&gt;</code> where it retries. If the bar ends on <strong>Done</strong>, your file is saved. If it ends with a red error and no retry line, use <strong>Help &gt; Send Feedback</strong>.</p>
+</div></details><details class="qa"><summary>What does the blue note under the Download button mean?</summary><div class="body">
+<p>It's information, not an error. It says when a download was retried at a lower quality, or when a video had no captions to save.</p>
+</div></details><details class="qa"><summary>Can I cancel a download?</summary><div class="body">
+<p>Yes. Click <strong>Cancel</strong>. The unfinished files are deleted, so nothing half-done is left in your folder.</p>
+</div></details><details class="qa"><summary>Can I download two things at once?</summary><div class="body">
+<p>One download runs at a time. To get several videos, use a playlist, or pick several qualities of one video, and they download one after another.</p>
+</div></details><details class="qa"><summary>Can I quit while it downloads?</summary><div class="body">
+<p>Quitting stops the download. Paste the link and start it again next time.</p>
+</div></details><details class="qa"><summary>Does it keep working if my Mac goes to sleep?</summary><div class="body">
+<p>No. A download can stop or fail while the Mac sleeps. For a long playlist, keep the Mac awake and plugged in.</p>
 
-  <div class="question">Do I need to be connected to the internet?</div>
-  <p class="answer">Yes, downloads and format fetching both require an active internet connection.</p>
+</div></details></section><section class="group" id="playlists"><h2>Playlists</h2>
+<details class="qa"><summary>Where does a whole playlist go?</summary><div class="body">
+<p>Into a new folder, named after the playlist, inside your Save to folder. The files are numbered in playlist order.</p>
+</div></details><details class="qa"><summary>Why are playlist videos only up to 1080p?</summary><div class="body">
+<p>To keep big playlists quick and reliable. For a single video in 4K, download it on its own.</p>
+</div></details><details class="qa"><summary>Some videos in the playlist didn't download.</summary><div class="body">
+<p>Private, deleted or members-only videos in a playlist can't be downloaded, so they're skipped. A red note says some items may have failed; the log names them. The rest of the playlist still downloads.</p>
+</div></details><details class="qa"><summary>Can I download only some videos from a playlist?</summary><div class="body">
+<p>Yes. In the playlist list, hold &#8984; and click the ones you want (or &#8679;-click to select a run), then click <strong>Download Selected</strong>.</p>
 
-  <div class="question">What's the difference between "Check for Updates" and "Check for yt-dlp Update"?</div>
-  <p class="answer">"Check for Updates" (in the app menu) updates YTDownloader itself. "Check for yt-dlp Update" updates the internal engine that actually talks to YouTube — this matters because YouTube changes things fairly often, and yt-dlp updates keep up with those changes independently of app releases.</p>
+</div></details></section><section class="group" id="trim"><h2>Trimming clips</h2>
+<details class="qa"><summary>The trim preview doesn't load.</summary><div class="body">
+<p>Give it a few seconds; YouTube makes new video links wait briefly before they play. If it still says it couldn't load, you can type the start and end times instead. Check for a yt-dlp update if it keeps happening.</p>
+</div></details><details class="qa"><summary>Why does a clip take longer than I expected?</summary><div class="body">
+<p>To cut exactly on the frames you chose, YTDownloader processes the clip after downloading it. A few minutes of 1080p usually takes well under a minute on a recent Mac; long clips and 4K take longer. The progress bar keeps moving while it works.</p>
+</div></details><details class="qa"><summary>The arrow keys don't step through frames.</summary><div class="body">
+<p>You're typing in a time box, where the arrows move the cursor. Click anywhere else in the Trim window and try again.</p>
+</div></details><details class="qa"><summary>How exact is the cut?</summary><div class="body">
+<p>To the frame. The clip starts and ends on exactly the frames you chose.</p>
+</div></details><details class="qa"><summary>Can I trim an Audio only download?</summary><div class="body">
+<p>Yes. Set the clip, then choose Audio only.</p>
+</div></details><details class="qa"><summary>Can I get several clips from one video?</summary><div class="body">
+<p>Yes, one at a time. Download the first clip, then click <strong>Edit Trim</strong>, set the next one and download again. Each clip's file name has its times in it, so they never overwrite each other.</p>
+</div></details><details class="qa"><summary>How do I go back to the whole video?</summary><div class="body">
+<p>Click the &times; beside the clip times in the main window, or <strong>Remove Trim</strong> in the Trim window.</p>
 
-  <div class="question">The log shows &ldquo;HTTP Error 403: Forbidden,&rdquo; or a message says YouTube blocked the standard download. Did my download work?</div>
-  <p class="answer">Yes, if you see a message that says <strong>Download complete</strong>, your file is saved and there is nothing you need to do. Sometimes YouTube refuses to hand over a video the usual way partway through. When that happens, YTDownloader notices and automatically tries again using a different kind of stream, at the quality you picked (this kind of stream tops out at 1080p, so a 4K choice comes out at 1080p). The retry starts the download over, so it can take a little longer. In the log at the bottom, the &ldquo;HTTP Error 403&rdquo; line is followed by a line starting with <strong>&gt;&gt;&gt;</strong> that marks the retry. If a download ends with an error and no retry message, use Help &rarr; Send Feedback so the log comes to Gardner.</p>
+</div></details></section><section class="group" id="captions"><h2>Captions</h2>
+<details class="qa"><summary>I asked for captions, but none were saved.</summary><div class="body">
+<p>That video has no English captions on YouTube, not even automatic ones. Music without words and very new uploads often don't. The video still downloads, and a note says no captions were saved for it.</p>
+</div></details><details class="qa"><summary>How do I use the .srt file in ProPresenter or Premiere?</summary><div class="body">
+<p>Keep it next to the video with the same name. Most apps import it with their own Import Captions or Subtitles command; some, like VLC, find it by themselves.</p>
+</div></details><details class="qa"><summary>I embedded captions but don't see them.</summary><div class="body">
+<p>Embedded captions are off until you turn them on in the player. In QuickTime, choose View &gt; Subtitles. Some apps don't show embedded captions at all; use the .srt file in those.</p>
+</div></details><details class="qa"><summary>The automatic captions have mistakes.</summary><div class="body">
+<p>They're YouTube's computer-made captions, and YTDownloader saves them as they are, only fixing their timing. Open the .srt file in TextEdit to correct words before using it.</p>
+</div></details><details class="qa"><summary>Can I get captions in another language?</summary><div class="body">
+<p>Not yet. YTDownloader saves English captions only.</p>
 
-  <div class="question">I checked a captions box, but no captions were saved. Why?</div>
-  <p class="answer">That video doesn't have English captions on YouTube, not even automatic ones. The video itself still downloads normally, and a note after the download tells you captions weren't available. Some videos, like music with no speaking or very new uploads, simply don't have any yet.</p>
+</div></details></section><section class="group" id="files"><h2>Files and History</h2>
+<details class="qa"><summary>Where did my download go?</summary><div class="body">
+<p>Into the folder beside <strong>Save to</strong>; your Downloads folder unless you chose another. Click <strong>Reveal in Finder</strong>, or open <strong>History</strong> and click <strong>Show in Finder</strong>.</p>
+</div></details><details class="qa"><summary>Why does Save to go back to Downloads?</summary><div class="body">
+<p>Each time YTDownloader opens, it starts on your Downloads folder. Click <strong>Choose&hellip;</strong> to pick another folder for this session.</p>
+</div></details><details class="qa"><summary>Why does the file name look slightly different from the title?</summary><div class="body">
+<p>Characters a Mac can't use in file names, like <code>:</code> and <code>/</code>, are swapped for look-alikes, and the picture size is added, like <code>[1920x1080]</code>.</p>
+</div></details><details class="qa"><summary>I downloaded the same video twice. Did it replace the first one?</summary><div class="body">
+<p>No. The second copy is saved as <code>Name (1).mp4</code>.</p>
+</div></details><details class="qa"><summary>Does clearing the history delete my files?</summary><div class="body">
+<p>No. Clear History only empties the list. Your files stay where they are.</p>
+</div></details><details class="qa"><summary>Why is an entry in History gray?</summary><div class="body">
+<p>That file has been deleted, moved to the Trash, or moved to another drive since it was downloaded. Files you only moved or renamed on the same drive are still found.</p>
+</div></details><details class="qa"><summary>How far back does History go?</summary><div class="body">
+<p>The last 100 downloads.</p>
 
-  <div class="question">Why does a trimmed clip take longer than I expected?</div>
-  <p class="answer">To cut exactly on the frames you picked, YTDownloader processes the clip after downloading it. A few minutes of 1080p video usually takes well under a minute on a recent Mac, but longer clips and 4K take more time. The progress bar keeps moving while it works.</p>
+</div></details></section><section class="group" id="signin"><h2>Signing in</h2>
+<details class="qa"><summary>Why is it asking me to sign in to YouTube?</summary><div class="body">
+<p>YouTube sometimes checks that a real person is downloading, especially on busy or shared networks. Sign in in the window that opens, click <strong>Done</strong> at the top, and try again. See the <a href="manual.html#signin">manual</a>.</p>
+</div></details><details class="qa"><summary>Is it safe to type my Google password there?</summary><div class="body">
+<p>Yes. That window is Google's own sign-in page, and your password goes straight to Google. YTDownloader only keeps the sign-in afterwards, the way a browser does, and only uses it to talk to YouTube.</p>
+</div></details><details class="qa"><summary>Which account should I use?</summary><div class="body">
+<p>Any Google account works. It doesn't need to own the video or be the church's account.</p>
+</div></details><details class="qa"><summary>It keeps asking me to sign in.</summary><div class="body">
+<p>Make sure you finished signing in before clicking Done. Then click <strong>Check for yt-dlp Update</strong> and try again. If it keeps happening, use <strong>Help &gt; Send Feedback</strong>.</p>
 
-  <div class="question">Does clearing the download history delete my files?</div>
-  <p class="answer">No. Clear History only empties the list in the app. Your downloaded files stay exactly where they are.</p>
+</div></details></section><section class="group" id="updates"><h2>Updates</h2>
+<details class="qa"><summary>What's the difference between Check for Updates and Check for yt-dlp Update?</summary><div class="body">
+<p><strong>Check for Updates</strong> (in the YTDownloader menu) updates the app itself: new features and fixes. <strong>Check for yt-dlp Update</strong> (bottom right of the window) updates the engine that talks to YouTube, which needs updating more often because YouTube changes often. Both also happen by themselves once a day.</p>
+</div></details><details class="qa"><summary>A banner says a new version is ready. What do I do?</summary><div class="body">
+<p>Click <strong>Show Update</strong> to see what's new, then <strong>Install Update</strong>. YTDownloader restarts with the new version in under a minute. Or click <strong>Later</strong> to hide the banner for now. Nothing installs until you say so.</p>
+</div></details><details class="qa"><summary>I clicked Skip This Version by mistake.</summary><div class="body">
+<p>Choose <strong>YTDownloader &gt; Check for Updates&hellip;</strong>. A check you ask for shows the update even if you skipped it.</p>
+</div></details><details class="qa"><summary>Will updating lose my settings or history?</summary><div class="body">
+<p>No. Your history, captions choices and sign-in carry over.</p>
+</div></details><details class="qa"><summary>How do I know which version I have?</summary><div class="body">
+<p>Choose <strong>YTDownloader &gt; About YTDownloader</strong>.</p>
+</div></details><details class="qa"><summary>This page mentions something my copy doesn't have.</summary><div class="body">
+<p>The manual and FAQ always describe the newest version. Choose <strong>YTDownloader &gt; Check for Updates&hellip;</strong> to get it. Features added recently are marked with the version that added them, like <span class="new">New in 1.2</span>.</p>
 
-  <div class="question">A download failed — what do I do?</div>
-  <p class="answer">Check the Log panel at the bottom of the window for details. If it's not clear what went wrong, use Help → Send Feedback, which will include the recent log automatically.</p>
+</div></details></section><section class="group" id="trouble"><h2>When something goes wrong</h2>
+<details class="qa"><summary>A download failed. What should I try?</summary><div class="body">
+<ol>
+<li>Read the red or blue message under the Download button.</li>
+<li>Click <strong>Check for yt-dlp Update</strong>, then try again.</li>
+<li>If a sign-in window opened, sign in, click Done, and try again.</li>
+<li>Try a lower quality, or wait a few minutes and try again.</li>
+</ol>
+</div></details><details class="qa"><summary>How do I report a problem?</summary><div class="body">
+<p>Choose <strong>Help &gt; Send Feedback&hellip;</strong>. It opens an email with your app version and the recent log already included. Add what you were trying to do and the link you used, and send it.</p>
+</div></details><details class="qa"><summary>What is the log for?</summary><div class="body">
+<p>It shows the technical details of each step. You don't need to read it, but it's the first thing that helps when something goes wrong. <strong>Copy</strong> above it copies the whole log.</p>
+</div></details></section>
+<div id="empty" class="empty hidden">No question matches. Try a different word.</div>
+<div class="footer">YTDownloader by Black Mile Studios</div>
+</main>
+</div>
+
+<script>
+(function () {
+  var side = document.getElementById('side');
+  var q = document.getElementById('q'), count = document.getElementById('count'), empty = document.getElementById('empty');
+  var groups = [].slice.call(document.querySelectorAll('section.group'));
+  var qas = [].slice.call(document.querySelectorAll('details.qa'));
+  var links = [].slice.call(document.querySelectorAll('#contents a'));
+  var before = null;
+  function clearMarks() {
+    [].slice.call(document.querySelectorAll('mark')).forEach(function (m) {
+      var p = m.parentNode; p.replaceChild(document.createTextNode(m.textContent), m); p.normalize();
+    });
+  }
+  function mark(el, term) {
+    var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null), nodes = [], n;
+    while ((n = walker.nextNode())) { if (n.nodeValue.toLowerCase().indexOf(term) >= 0) nodes.push(n); }
+    nodes.forEach(function (node) {
+      var text = node.nodeValue, lower = text.toLowerCase(), frag = document.createDocumentFragment(), i = 0, at;
+      while ((at = lower.indexOf(term, i)) >= 0) {
+        frag.appendChild(document.createTextNode(text.slice(i, at)));
+        var m = document.createElement('mark'); m.textContent = text.slice(at, at + term.length); frag.appendChild(m);
+        i = at + term.length;
+      }
+      frag.appendChild(document.createTextNode(text.slice(i)));
+      node.parentNode.replaceChild(frag, node);
+    });
+  }
+  function light(group) {
+    links.forEach(function (a) { a.setAttribute('aria-current', group && a.getAttribute('href') === '#' + group.id ? 'true' : 'false'); });
+  }
+  // Only the questions that mention the word, opened, under their groups.
+  function search() {
+    var term = q.value.trim().toLowerCase();
+    clearMarks();
+    links.forEach(function (a) { a.classList.remove('miss'); var h = a.querySelector('.hits'); if (h) a.removeChild(h); });
+    if (!term) {
+      qas.forEach(function (d, i) { d.classList.remove('hidden'); if (before) d.open = before[i]; });
+      groups.forEach(function (g) { g.classList.remove('hidden'); });
+      before = null; empty.classList.add('hidden'); count.textContent = ''; return;
+    }
+    if (!before) before = qas.map(function (d) { return d.open; });
+    var found = 0;
+    groups.forEach(function (g, i) {
+      var here = 0;
+      [].slice.call(g.querySelectorAll('details.qa')).forEach(function (d) {
+        var hit = d.textContent.toLowerCase().indexOf(term) >= 0;
+        d.classList.toggle('hidden', !hit); d.open = hit;
+        if (hit) { here++; mark(d, term); }
+      });
+      g.classList.toggle('hidden', here === 0);
+      links[i].classList.toggle('miss', here === 0);
+      if (here) { var b = document.createElement('span'); b.className = 'hits'; b.textContent = here; links[i].appendChild(b); }
+      found += here;
+    });
+    empty.classList.toggle('hidden', found > 0);
+    count.textContent = found ? found + (found === 1 ? ' question' : ' questions') : 'No matches';
+    window.scrollTo(0, 0);
+  }
+  q.addEventListener('input', search);
+  links.forEach(function (a) { a.addEventListener('click', function () { side.classList.remove('open'); }); });
+  document.getElementById('menu').addEventListener('click', function () { side.classList.toggle('open'); });
+  document.getElementById('open-all').onclick = function () { qas.forEach(function (d) { d.open = true; }); };
+  document.getElementById('close-all').onclick = function () { qas.forEach(function (d) { d.open = false; }); };
+  // The group being read is the one lit in the contents.
+  function spy() {
+    var at = null;
+    groups.forEach(function (g) { if (!g.classList.contains('hidden') && g.getBoundingClientRect().top < 160) at = g; });
+    light(at || groups.filter(function (g) { return !g.classList.contains('hidden'); })[0]);
+  }
+  window.addEventListener('scroll', spy, { passive: true });
+  spy();
+  document.addEventListener('keydown', function (e) {
+    var typing = document.activeElement === q;
+    if (e.key === '/' && !typing) { e.preventDefault(); q.focus(); }
+    if (e.key === 'Escape' && typing) { q.value = ''; search(); q.blur(); }
+  });
+})();
+</script>
 </body>
 </html>
